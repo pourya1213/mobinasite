@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+body {
+  font-family: 'Vazirmatn', sans-serif;
+  background: linear-gradient(135deg, #6a0dad, #b666d2);
+  margin: 0;
+  padding: 0;
+  color: white;
+  text-align: center;
+  position: relative; /* مهم برای stacking context */
+  z-index: 1;
+}
+
+#particles-js {
+  pointer-events: none; /* این خط باعث می‌شود کلیک روی ذرات تاثیری نداشته باشد */
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* ذرات */
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: floatUp linear infinite;
+}
+
+/* انیمیشن حرکت ذرات */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+header {
+  padding: 25px 20px;
+  margin: 20px auto;
+  width: fit-content;
+  border: 3px solid rgba(255 255 255 / 0.6);
+  border-radius: 18px;
+  box-shadow:
+    0 0 12px rgba(255 255 255 / 0.4),
+    inset 0 0 10px rgba(255 255 255 / 0.7);
+  background: rgba(255 255 255 / 0.1);
+  backdrop-filter: blur(10px);
+  font-size: 2.5rem;
+  font-weight: 700;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  position: relative;
+  z-index: 10; /* بالاتر از ذرات */
+}
+
+header .icon {
+  font-size: 2.8rem;
+  color: #ff6ec7;
+  animation: bounce 2.5s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+}
+
+.neon-effect {
+  font-size: 2.8rem;
+  color: #ff4de1;
+  text-shadow:
+    0 0 5px #ff4de1,
+    0 0 10px #ff4de1,
+    0 0 20px #ff4de1,
+    0 0 40px #f900ff,
+    0 0 80px #f900ff,
+    0 0 90px #f900ff,
+    0 0 100px #f900ff,
+    0 0 150px #f900ff;
+  animation: neonPulse 3s infinite alternate ease-in-out;
+  margin-left: 10px;
+}
+
+@keyframes neonPulse {
+  0% {
+    color: #ff4de1;
+    text-shadow:
+      0 0 5px #ff4de1,
+      0 0 10px #ff4de1,
+      0 0 20px #ff4de1,
+      0 0 40px #f900ff,
+      0 0 80px #f900ff;
+  }
+  100% {
+    color: #ff85f7;
+    text-shadow:
+      0 0 10px #ff85f7,
+      0 0 20px #ff85f7,
+      0 0 30px #ff85f7,
+      0 0 50px #ffccff,
+      0 0 100px #ffccff;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1100px;
+  margin: 0 auto 40px auto;
+  position: relative;
+  z-index: 10; /* بالاتر از ذرات */
+}
+
+.art-card {
+  border: 3px solid rgba(255 255 255 / 0.6);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255 255 255 / 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  position: relative;
+  z-index: 10; /* بالاتر از ذرات */
+}
+
+.art-card:hover {
+  transform: scale(1.07) rotate(-1deg);
+  box-shadow: 0 0 50px rgba(255 255 255 / 0.9);
+}
+
+.art-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.5s ease;
+}
+
+.art-card:hover img {
+  transform: scale(1.05);
+}
+
+footer {
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-top: 2px solid rgba(255 255 255 / 0.3);
+  max-width: 1100px;
+  margin: 0 auto 20px auto;
+  border-radius: 10px 10px 0 0;
+  backdrop-filter: blur(6px);
+  color: #ffe6f1;
+  position: relative;
+  z-index: 10; /* بالاتر از ذرات */
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 0 40px white;
+}
+
+.modal-close {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
